@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
               <Image src="/logoNexo.png" alt="NEXOLIA" width={280} height={100} className="h-16 w-auto " />
             </Link>
             <p className="text-white/80 mb-6 leading-relaxed">
-              Votre partenaire digital de confiance pour des solutions innovantes et performantes.
+              Votre partenaire digital de confiance pour des solutions innovantes et performantes digitale.
             </p>
             <div className="flex space-x-4">
               <Badge variant="secondary" className="bg-white/10 text-white">
