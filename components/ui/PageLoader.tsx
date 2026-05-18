@@ -2,7 +2,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import React from "react"
-import logo from "../../public/nexolia-icone.jpg"
+import logo from "../../public/nexolialogo.png"
 
 export default function PageLoader() {
   return (
@@ -40,7 +40,8 @@ export default function PageLoader() {
             alt="NEXOLIA Logo"
             width={96}
             height={96}
-            className="rounded-full border-2 border-white shadow-lg"
+            className="border-2 border-white shadow-lg"
+            style={{borderRadius:'50%'}}
           />
         </motion.div>
       </motion.div>

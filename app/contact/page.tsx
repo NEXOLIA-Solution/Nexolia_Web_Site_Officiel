@@ -28,6 +28,7 @@ import NavBar from "@/components/ui/NavBar"
 import ContactForm from "@/components/ui/ContactForm"
 import Testimonials from "@/components/ui/Testimonials"
 import SurFooter from "@/components/ui/SurFooter"
+import ContactInfo from "@/components/ContactInfo"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -111,23 +112,7 @@ export default function ContactPage() {
     },
   ]
 
-  const contactMethods = [
-    {
-      icon: <Calendar className="w-6 h-6" />,
-      title: "Réserver un appel",
-      description: "Planifiez un appel de 30 min avec notre équipe",
-      action: "Réserver maintenant",
-      color: "bg-blue-500",
-    },
 
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email détaillé",
-      description: "Envoyez-nous votre cahier des charges",
-      action: "Envoyer un email",
-      color: "bg-purple-500",
-    },
-  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -160,114 +145,21 @@ export default function ContactPage() {
               accompagne à chaque étape de votre projet.
             </p>
 
-            {/* Quick Contact Methods */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
-              {contactMethods.map((method, index) => (
-                <Card
-                  key={index}
-                  className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                >
-                  <CardContent className="p-4 sm:p-6 text-center">
-                    <div
-                      className={`w-12 h-12 ${method.color} rounded-full flex items-center justify-center text-white mx-auto mb-4`}
-                    >
-                      {method.icon}
-                    </div>
-                    <h3 className="font-semibold text-[#53828a] mb-2">{method.title}</h3>
-                    <p className="text-[#727683] text-sm mb-4">{method.description}</p>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="border-[#53828a] text-[#53828a] hover:bg-[#53828a] hover:text-white bg-transparent"
-                    >
-                      {method.action}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+          
           </div>
         </div>
       </section>
 
       
 
-      {/* Why Choose Us */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="w-[90%] max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#53828a] mb-4">
-              Pourquoi Nous Choisir ?
-            </h2>
-            <p className="text-xl text-[#727683] max-w-2xl mx-auto">
-              Découvrez les avantages qui font de NEXOLIA votre partenaire idéal
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {whyChooseUs.map((item, index) => (
-              <Card
-                key={index}
-                className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-              >
-                <CardContent className="p-4 sm:p-6 lg:p-8 text-center">
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-[#53828a]/10 to-[#b05f76]/10 flex items-center justify-center text-[#53828a]">
-                    {item.icon}
-                  </div>
-                  <h3 className="font-semibold text-[#53828a] mb-3 text-lg">{item.title}</h3>
-                  <p className="text-[#727683] text-sm leading-relaxed">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <ContactForm />
 
 
-      
+      <ContactInfo/>r
 
-      {/* FAQ Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#53828a] mb-4">Questions Fréquentes</h2>
-            <p className="text-xl text-[#727683] max-w-2xl mx-auto">
-              Trouvez rapidement les réponses à vos questions les plus courantes
-            </p>
-          </div>
 
-          <div className="max-w-4xl mx-auto">
-            {faqs.map((faq, index) => (
-              <Card key={index} className="mb-4 border-0 shadow-md">
-                <CardContent className="p-0">
-                  <button
-                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                    onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                  >
-                    <h3 className="font-semibold text-[#53828a] text-lg pr-4">{faq.question}</h3>
-                    {expandedFaq === index ? (
-                      <ChevronUp className="w-5 h-5 text-[#53828a] flex-shrink-0" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-[#53828a] flex-shrink-0" />
-                    )}
-                  </button>
-                  {expandedFaq === index && (
-                    <div className="px-6 pb-6">
-                      <p className="text-[#727683] leading-relaxed">{faq.answer}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <Testimonials/>
 
          {/* CTA Section */}
       <SurFooter />

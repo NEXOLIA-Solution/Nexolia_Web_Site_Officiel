@@ -55,7 +55,7 @@ export default function QuoteRequestButton() {
         className="border-[#53828a] text-[#53828a] hover:bg-[#53828a] hover:text-white bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
       >
         <ExternalLink className="mr-2 w-5 h-5" />
-        Demander un Devis
+        Demander Un Devis Gratuitement
       </Button>
 
       {/* === Popup (Dialog) === */}

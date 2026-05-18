@@ -15,25 +15,28 @@ import f1 from "../../public/equipe/f1.webp"
 import g4 from "../../public/equipe/g4.jpg"
 import wahbi from "../../public/equipe/wahbi.jpg"
 import aziz from "../../public/equipe/aziz.png"
-import eya from "../../public/equipe/EYA.png"
+import zayneb from "../../public/equipe/zayneb.png"
+import mahmoud from "../../public/equipe/mahmoud.png"
+import abdou from "../../public/equipe/WhatsApp Image 2026-05-13 at 11.50.56.jpeg"
 
 const Team: React.FC = () => {
   const team = [
 
     {
-      name: "Eya Belhadj",
-      role: "Experte Comptable",
-      bio: "Experte comptable avec une solide expérience en finance, comptabilité et gestion des ressources humaines. Spécialisée en pilotage financier, conformité réglementaire, optimisation des coûts et accompagnement stratégique des entreprises. Certifiée PMP (Project Management Professional), avec une forte capacité à gérer des projets financiers complexes et transverses.",
-      image: eya,
+      name: "Zayneb Kawana",
+      role: "Responsable Commerciale & Ressources Humaines - Nexolia Consulting",
+      bio: "Responsable commerciale et responsable des ressources humaines chez Nexolia Consulting. Elle assure le développement commercial, la gestion de la relation client ainsi que le pilotage des ressources humaines. Elle combine une forte expertise en management, recrutement, communication et stratégie commerciale pour accompagner la croissance de l’entreprise.",
+      image: zayneb,
       expertise: [
-        "Comptabilité & Audit",
-        "Gestion financière",
-        "Contrôle de gestion",
+        "Développement commercial",
+        "Gestion de la relation client",
         "Ressources humaines",
-        "Pilotage de projets (PMP)",
-        "Conformité réglementaire & fiscalité"
+        "Recrutement & gestion des talents",
+        "Management d'équipe",
+        "Stratégie commerciale",
+        "Communication professionnelle"
       ],
-      linkedin: "https://www.linkedin.com/in/eya-belhadj-036595255/",
+      linkedin: "https://www.linkedin.com/in/zaineb-kaawana-154491407",
       gradient: "from-rose-500 to-orange-500",
     }
     ,
@@ -57,14 +60,53 @@ const Team: React.FC = () => {
       gradient: "from-pink-500 to-red-600",
     },
     {
+      name: "Abed Ejlil Chbil",
+      role: "Administrateur Systèmes & Réseaux Senior",
+      bio: "Administrateur systèmes et réseaux senior avec plus de 15 ans d’expérience dans l’architecture des infrastructures réseau bancaires. Expert en conception, déploiement et sécurisation des systèmes complexes. Certifié CCNA et CCNA Data Center, avec une forte spécialisation en cybersécurité et en protection des environnements critiques.",
+      image: abdou,
+      expertise: [
+        "Administration Systèmes",
+        "Administration Réseaux",
+        "Architecture réseau bancaire",
+        "Cybersécurité",
+        "CCNA",
+        "CCNA Data Center",
+        "Sécurité des infrastructures",
+        "Cloud & Datacenter"
+      ],
+      linkedin: "#",
+      gradient: "from-slate-600 to-blue-700",
+    },
+   
+    {
+      name: "Mahmoud Bousbih",
+      role: "Senior Full-Stack JavaScript Developer",
+      bio: "Développeur full-stack senior spécialisé en JavaScript, avec une forte expertise en React, Next.js, Node.js et MongoDB. Expérimenté dans la création d’applications web et mobiles performantes avec React Native, ainsi que dans la conception d’interfaces UX/UI modernes et intuitives.",
+      image: mahmoud,
+      expertise: [
+        "CTO",
+        "Techlead",
+        "Full-Stack JS",
+        "Senior Developer",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "React Native",
+        "UX/UI Design"
+      ],
+      linkedin: "https://www.linkedin.com/in/mahmoudbh7?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      gradient: "from-green-500 to-teal-600",
+    }, {
       name: "Mohamed Wahbi Salwej",
       role: "Full-Stack Developer Microsoft & MERN",
       bio: "Spécialisé en développement d’applications web, mobiles et solutions Microsoft. Expert en MERN stack, React Native et Power Platform. Passionné par l’IA, l’analytique (Power BI) et les solutions cloud sécurisées.",
       image: wahbi,
-      expertise: ["CEO", "CTO", "Full-Stack Dev", "React Native", "Power Platform", "AI & Analytics"],
+      expertise: ["CEO", "CTO", "PMO", "Togaf", "Full-Stack Dev", "React Native", "Power Platform", "AI & Analytics"],
       linkedin: "https://www.linkedin.com/in/med-wahbi-salwej-692b7a282/",
       gradient: "from-blue-500 to-purple-600",
-    },
+    }
   ]
 
   return (
