@@ -7,6 +7,7 @@ import { TypeAnimation } from "react-type-animation";
 import Stats from "@/components/ui/Stats";
 import QuoteRequestButton from "@/components/ui/QuoteRequestButton";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 
 
@@ -203,19 +204,99 @@ export default function HeroSection() {
                         className="flex flex-col sm:flex-row gap-3 sm:gap-5 justify-center items-center"
                     >
                         <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }}>
-                            <Button
-                                size="lg"
-                                onClick={handleNavigate}
-                                className="group bg-gradient-to-r from-[#53828a] to-[#b05f76] hover:from-[#3a6a70] hover:to-[#8a4f66] text-white shadow-2xl hover:shadow-3xl transition-all duration-300 px-5 py-3 text-sm sm:px-8 sm:py-7 sm:text-lg font-bold rounded-2xl relative overflow-hidden"
+                            <Link
+                                href={"/portfolio"}
+                                className="
+        group relative inline-flex items-center justify-center
+        overflow-hidden rounded-2xl
+
+        bg-gradient-to-r from-[#53828a] via-[#6b8f95] to-[#b05f76]
+        px-6 py-3.5
+        sm:px-8 sm:py-4
+
+        text-sm sm:text-lg
+        font-semibold text-white
+
+        shadow-[0_10px_35px_rgba(83,130,138,0.35)]
+        hover:shadow-[0_15px_45px_rgba(176,95,118,0.45)]
+
+        transition-all duration-300 ease-out
+        hover:-translate-y-1 hover:scale-[1.02]
+
+        border border-white/10
+        backdrop-blur-md
+    "
                             >
-                                <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                                <Eye className="mr-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
-                                Découvrir nos solutions
-                            </Button>
+                                {/* Animation Shine */}
+                                <span
+                                    className="
+            absolute inset-0
+            bg-gradient-to-r from-transparent via-white/20 to-transparent
+            translate-x-[-120%]
+            group-hover:translate-x-[120%]
+            transition-transform duration-1000
+        "
+                                />
+
+                                {/* Glow Background */}
+                                <span
+                                    className="
+            absolute inset-0
+            bg-gradient-to-r from-[#53828a]/20 to-[#b05f76]/20
+            opacity-0 group-hover:opacity-100
+            transition-opacity duration-300
+        "
+                                />
+
+                                {/* Content */}
+                                <span className="relative flex items-center gap-2 z-10">
+                                    <Eye className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
+                                    Découvrir nos solutions
+                                </span>
+                            </Link>
                         </motion.div>
 
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                            <QuoteRequestButton />
+                            <Link
+                                href={"/contact"}
+                                className="
+        group relative inline-flex items-center justify-center
+        overflow-hidden rounded-2xl
+
+        bg-[#7e95a0]
+        hover:bg-[#3f3f3f]
+
+        px-6 py-3.5
+        sm:px-8 sm:py-4
+
+        text-sm sm:text-lg
+        font-semibold text-white
+
+        border border-[#5a5a5a]
+
+        shadow-xl
+        hover:shadow-2xl
+
+        transition-all duration-300 ease-out
+        hover:-translate-y-1 hover:scale-[1.02]
+    "
+                            >
+                                {/* Shine Effect */}
+                                <span
+                                    className="
+            absolute inset-0
+            bg-gradient-to-r from-transparent via-white/10 to-transparent
+            translate-x-[-120%]
+            group-hover:translate-x-[120%]
+            transition-transform duration-1000
+        "
+                                />
+
+                                {/* Content */}
+                                <span className="relative z-10 flex items-center gap-2">
+                                    Demander un devis gratuitement
+                                </span>
+                            </Link>
                         </motion.div>
                     </motion.div>
 

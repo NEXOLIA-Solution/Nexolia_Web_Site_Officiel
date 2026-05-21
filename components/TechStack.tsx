@@ -389,31 +389,7 @@ const TechStack: React.FC = () => {
                 </div>
             )}
 
-            {/* Statistiques des technologies */}
-            <div className="mt-12 p-6 rounded-2xl text-center"
-                style={{
-                    background: `linear-gradient(135deg, ${colors.rose1}08, ${colors.sage}08)`,
-                    border: `1px solid ${colors.rose1}20`
-                }}>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                    <div>
-                        <div className="text-2xl font-bold" style={{ color: colors.rose1 }}>{technologies.length}</div>
-                        <div className="text-sm" style={{ color: colors.textSecondary }}>Technologies maîtrisées</div>
-                    </div>
-                    <div>
-                        <div className="text-2xl font-bold" style={{ color: colors.rose2 }}>{categories.length - 1}</div>
-                        <div className="text-sm" style={{ color: colors.textSecondary }}>Domaines d'expertise</div>
-                    </div>
-                    <div>
-                        <div className="text-2xl font-bold" style={{ color: colors.sage }}>100%</div>
-                        <div className="text-sm" style={{ color: colors.textSecondary }}>Projets réussis</div>
-                    </div>
-                    <div>
-                        <div className="text-2xl font-bold" style={{ color: colors.rose1 }}>24/7</div>
-                        <div className="text-sm" style={{ color: colors.textSecondary }}>Support technique</div>
-                    </div>
-                </div>
-            </div>
+          
 
             <style>{`
         @keyframes fadeIn {

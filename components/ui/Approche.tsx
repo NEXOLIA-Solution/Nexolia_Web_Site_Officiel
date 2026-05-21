@@ -1,14 +1,14 @@
-import { 
-  Clock, 
-  Shield, 
-  TrendingUp, 
-  Users, 
-  Sparkles, 
-  ArrowRight, 
-  Zap, 
-  Rocket, 
-  GraduationCap, 
-  Headphones, 
+import {
+  Clock,
+  Shield,
+  TrendingUp,
+  Users,
+  Sparkles,
+  ArrowRight,
+  Zap,
+  Rocket,
+  GraduationCap,
+  Headphones,
   Eye,
   GitBranch,
   Layout,
@@ -21,6 +21,7 @@ import {
   Coffee,
   MessageCircle
 } from 'lucide-react'
+import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 
 /**
@@ -141,7 +142,7 @@ const Approche: React.FC = () => {
   }, [])
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden"
       aria-label="Notre approche Agile"
@@ -170,13 +171,13 @@ const Approche: React.FC = () => {
               Nexolia Consulting - Méthode Agile Certifiée
             </span>
           </div>
-          
+
           <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
             Notre Approche Agile
           </h1>
-          
+
           <p className="text-xl text-purple-200 max-w-3xl mx-auto leading-relaxed">
-            Une méthodologie où le client vérifie et valide son produit étape par étape 
+            Une méthodologie où le client vérifie et valide son produit étape par étape
             avec l'équipe de développement Nexolia
           </p>
         </div>
@@ -187,7 +188,7 @@ const Approche: React.FC = () => {
           ============================================
         */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          
+
           {/* 
             ============================================
             COLONNE GAUCHE - LOGO NEXOLIA + MÉTHODE AGILE
@@ -195,14 +196,13 @@ const Approche: React.FC = () => {
           */}
           <div className="space-y-6">
             {/* Logo Nexolia Consulting */}
-            <div className={`flex justify-center mb-4 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-12'
-            }`}>
+            <div className={`flex justify-center mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-12'
+              }`}>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-2xl opacity-50 animate-pulse-slow"></div>
                 <div className="relative bg-gradient-to-br from-purple-600/30 to-pink-600/30 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-2xl">
-                  <img 
-                  style={{borderRadius:"10px"}}
+                  <img
+                    style={{ borderRadius: "10px" }}
                     src="/nexoLogo.png"
                     alt="Nexolia Consulting - Expert en transformation digitale"
                     className="w-64 h-auto object-contain mx-auto"
@@ -221,11 +221,10 @@ const Approche: React.FC = () => {
             </div>
 
             {/* Description Nexolia */}
-            <div className={`text-center mb-6 transition-all duration-700 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
-            }`}>
+            <div className={`text-center mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+              }`}>
               <p className="text-purple-200 leading-relaxed">
-                Notre expertise assure une <span className="text-purple-300 font-semibold">digitalisation fiable</span> des processus métier complexes, 
+                Notre expertise assure une <span className="text-purple-300 font-semibold">digitalisation fiable</span> des processus métier complexes,
                 mais aussi toute une <span className="text-purple-300 font-semibold">chaîne de valeur complète</span>.
               </p>
             </div>
@@ -238,22 +237,20 @@ const Approche: React.FC = () => {
                 </div>
                 Méthode Agile - Validation Itérative
               </h2>
-              
+
               <div className="space-y-4">
                 {steps.map((step, index) => (
-                  <div 
+                  <div
                     key={index}
-                    className={`group relative transition-all duration-500 ${
-                      isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-                    }`}
+                    className={`group relative transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+                      }`}
                     style={{ transitionDelay: `${index * 100}ms` }}
                     onMouseEnter={() => setHoveredStep(index)}
                     onMouseLeave={() => setHoveredStep(null)}
                   >
-                    <div className={`absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl blur opacity-0 group-hover:opacity-30 transition-all duration-500 ${
-                      hoveredStep === index ? 'opacity-50' : ''
-                    }`}></div>
-                    
+                    <div className={`absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl blur opacity-0 group-hover:opacity-30 transition-all duration-500 ${hoveredStep === index ? 'opacity-50' : ''
+                      }`}></div>
+
                     <div className="relative flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-white/5 to-transparent border border-white/10 group-hover:border-purple-400/50 transition-all duration-300 group-hover:scale-[1.02]">
                       <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                         {step.icon}
@@ -277,7 +274,7 @@ const Approche: React.FC = () => {
               </div>
             </div>
 
-           
+
           </div>
 
           {/* 
@@ -287,20 +284,19 @@ const Approche: React.FC = () => {
           */}
           <div className="space-y-6">
             {/* Image Agile agrandie */}
-            <div className={`flex justify-center items-center transition-all duration-700 delay-200 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
-            }`}>
+            <div className={`flex justify-center items-center transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+              }`}>
               <div className="relative animate-float">
                 {/* Anneaux décoratifs */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 blur-2xl opacity-30 animate-pulse-slow"></div>
                 <div className="absolute -inset-6 rounded-full border-2 border-purple-400/30 animate-spin-slow"></div>
                 <div className="absolute -inset-12 rounded-full border border-pink-400/20 animate-spin-slow animation-delay-1000"></div>
                 <div className="absolute -inset-20 rounded-full border border-purple-400/10 animate-spin-slow animation-delay-2000"></div>
-                
+
                 {/* Image principale */}
-                <div style={{background:"white",padding:"0px"}} className="relative bg-gradient-to-br from-purple-600/30 to-pink-600/30 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-2xl">
-                  <img 
-                  style={{height:"100%",width:"100%"}}
+                <div style={{ background: "white", padding: "0px" }} className="relative bg-gradient-to-br from-purple-600/30 to-pink-600/30 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-2xl">
+                  <img
+                    style={{ height: "100%", width: "100%" }}
                     src="/agile/1.png"
                     alt="Méthodologie Agile Nexolia Consulting"
                     className="w-96 h-96 object-contain rounded-xl"
@@ -308,7 +304,7 @@ const Approche: React.FC = () => {
                       (e.target as HTMLImageElement).src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"%3E%3Cdefs%3E%3ClinearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"%3E%3Cstop offset="0%" style="stop-color:%238b5cf6;stop-opacity:0.8"/%3E%3Cstop offset="100%" style="stop-color:%23ec4899;stop-opacity:0.8"/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx="200" cy="200" r="180" fill="url(%23grad1)" stroke="%237c3aed" stroke-width="3"/%3E%3Ctext x="200" y="160" text-anchor="middle" fill="%23ffffff" font-size="28" font-weight="bold"%3EAGILE%3C/text%3E%3Ctext x="200" y="200" text-anchor="middle" fill="%23e9d5ff" font-size="20"%3EMETHODOLOGY%3C/text%3E%3Ctext x="200" y="240" text-anchor="middle" fill="%23c084fc" font-size="14"%3EValidation Client%3C/text%3E%3Ctext x="200" y="265" text-anchor="middle" fill="%23a855f7" font-size="12"%3EItération %26 Feedback%3C/text%3E%3C/svg%3E';
                     }}
                   />
-                  
+
                   {/* Badges flottants */}
                   <div className="absolute -top-4 -right-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full px-4 py-2 shadow-lg animate-bounce-slow">
                     <span className="text-sm font-bold text-white flex items-center gap-1">
@@ -331,9 +327,8 @@ const Approche: React.FC = () => {
               NOUVEAU CONTENU SOUS L'IMAGE - BÉNÉFICES
               ============================================
             */}
-            <div className={`space-y-6 transition-all duration-700 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-            }`}>
+            <div className={`space-y-6 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+              }`}>
               {/* Bénéfices clés */}
               <div className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-white/10">
                 <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
@@ -373,7 +368,7 @@ const Approche: React.FC = () => {
                 </div>
               </div>
 
-             
+
 
               {/* Indicateurs de progression */}
               <div className="grid grid-cols-2 gap-4">
@@ -394,32 +389,31 @@ const Approche: React.FC = () => {
               </div>
 
 
-               {/* Statistiques clés */}
-            <div className={`grid grid-cols-3 gap-4 transition-all duration-700 delay-500 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
-              <div className="text-center p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  24/7
+              {/* Statistiques clés */}
+              <div className={`grid grid-cols-3 gap-4 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}>
+                <div className="text-center p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    24/7
+                  </div>
+                  <div className="text-xs text-purple-300">Support TMA</div>
                 </div>
-                <div className="text-xs text-purple-300">Support TMA</div>
-              </div>
-              <div className="text-center p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  100%
+                <div className="text-center p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    100%
+                  </div>
+                  <div className="text-xs text-purple-300">Satisfaction</div>
                 </div>
-                <div className="text-xs text-purple-300">Satisfaction</div>
-              </div>
-              <div className="text-center p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  Agile
+                <div className="text-center p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
+                  <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Agile
+                  </div>
+                  <div className="text-xs text-purple-300">Certifiée</div>
                 </div>
-                <div className="text-xs text-purple-300">Certifiée</div>
               </div>
-            </div>
 
               {/* Call to action secondaire */}
-              
+
             </div>
           </div>
         </div>
@@ -430,15 +424,24 @@ const Approche: React.FC = () => {
           ============================================
         */}
         <div className="text-center mt-16 animate-fade-up">
-          <button 
-            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
+          <Link
+            href="/contact"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 
+  bg-gradient-to-r from-purple-600 to-pink-600 
+  rounded-full text-white font-semibold text-lg
+  transition-all duration-300 hover:scale-105
+  hover:shadow-2xl hover:shadow-purple-500/50
+  overflow-hidden"
             aria-label="Démarrer votre projet Agile avec Nexolia Consulting"
           >
             <Sparkles className="w-5 h-5 animate-pulse" />
-            Démarrer Votre Projet Agile
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+
+            <span>Démarrer Votre Projet Agile</span>
+
+            <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-          </button>
+          </Link>
         </div>
       </div>
 

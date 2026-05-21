@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Shield, Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Facebook, ArrowUp, Sparkles, Cpu, Code2, Brain, Zap, Globe, Clock, Award, Heart, TrendingUp, ChevronRight, Coffee, Smile, CheckCircle } from "lucide-react"
+import { Shield, Mail, Phone, MapPin, Send,Instagram, Github, Linkedin, Twitter, Facebook, ArrowUp, Sparkles, Cpu, Code2, Brain, Zap, Globe, Clock, Award, Heart, TrendingUp, ChevronRight, Coffee, Smile, CheckCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { useRouter } from "next/navigation"
 
@@ -91,11 +91,11 @@ const Footer: React.FC = () => {
   }
 
   const servicesList = [
-    { name: "Développement Web", icon: Code2, path: "/services/web", color: "#3b82f6" },
-    { name: "Applications Mobile", icon: Zap, path: "/services/mobile", color: "#f59e0b" },
-    { name: "Solutions SaaS", icon: Zap, path: "/services/saas", color: "#10b981" },
-    { name: "Design & UX/UI", icon: Brain, path: "/services/design", color: "#8b5cf6" },
-    { name: "Conseil & Audit", icon: TrendingUp, path: "/services/consulting", color: "#ec4899" },
+    { name: "Développement Web", icon: Code2, path: "/services", color: "#3b82f6" },
+    { name: "Applications Mobile", icon: Zap, path: "/services", color: "#f59e0b" },
+    { name: "Solutions SaaS", icon: Zap, path: "/services", color: "#10b981" },
+    { name: "Design & UX/UI", icon: Brain, path: "/services", color: "#8b5cf6" },
+    { name: "Conseil & Audit", icon: TrendingUp, path: "/services", color: "#ec4899" },
   ]
 
   // Cloud icon component for missing import
@@ -213,7 +213,7 @@ const Footer: React.FC = () => {
                 <span>À Propos</span>
                 <ChevronRight size={14} className="link-arrow" />
               </li>
-              <li onClick={() => handleNavigate("/careers")}>
+              <li onClick={() => handleNavigate("/portfolio")}>
                 <div className="link-icon-wrapper"><Coffee size={14} /></div>
                 <span>Carrières</span>
                 <ChevronRight size={14} className="link-arrow" />
@@ -223,9 +223,9 @@ const Footer: React.FC = () => {
                 <span>Blog & News</span>
                 <ChevronRight size={14} className="link-arrow" />
               </li>
-              <li onClick={() => handleNavigate("/privacy")}>
+              <li onClick={() => handleNavigate("/contact")}>
                 <div className="link-icon-wrapper"><Shield size={14} /></div>
-                <span>Confidentialité</span>
+                <span>Passer voutre devis gratuitement !</span>
                 <ChevronRight size={14} className="link-arrow" />
               </li>
             </ul>
@@ -240,11 +240,19 @@ const Footer: React.FC = () => {
             <ul className="contact-list">
               <li>
                 <Mail size={14} />
-                <a href="mailto:contact@nexolia.com">contact@nexolia.com</a>
+                <a href="mailto:contact@nexolia-consulting.com">contact@nexolia-consulting.com</a>
+              </li>
+               <li>
+                <Mail size={14} />
+                <a href="mailto:info@nexolia-consulting.com">info@nexolia-consulting.com</a>
               </li>
               <li>
                 <Phone size={14} />
                 <a href="tel:+21646384214">+216 46 384 214</a>
+              </li>
+              <li>
+                <Phone size={14} />
+                <a href="tel:+21692233647">+216 92 233 647</a>
               </li>
               <li>
                 <MapPin size={14} />
@@ -252,16 +260,16 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Clock size={14} />
-                <span>Lun - Ven: 9h00 - 18h00</span>
+                <span>Lun - Ven: 8h00 - 17h00</span>
               </li>
             </ul>
             <div className="social-group">
               <div className="social-label">Follow us</div>
               <div className="social-icons">
                 <a href="#" className="social-btn"><Linkedin size={14} /></a>
-                <a href="#" className="social-btn"><Github size={14} /></a>
+                <a href="https://www.instagram.com/nexoliaconsulting/" className="social-btn"><Instagram size={14} /></a>
                 <a href="#" className="social-btn"><Twitter size={14} /></a>
-                <a href="#" className="social-btn"><Facebook size={14} /></a>
+                <a href="https://www.facebook.com/profile.php?id=61589281981252" className="social-btn"><Facebook size={14} /></a>
               </div>
             </div>
           </div>
@@ -278,11 +286,7 @@ const Footer: React.FC = () => {
               <span className="separator">•</span>
               <span>Tous droits réservés</span>
             </p>
-            <div className="legal-links">
-              <Link href="/mentions">Mentions légales</Link>
-              <Link href="/cgv">CGV</Link>
-              <Link href="/confidentialite">Confidentialité</Link>
-            </div>
+           
           </div>
         </div>
       </div>

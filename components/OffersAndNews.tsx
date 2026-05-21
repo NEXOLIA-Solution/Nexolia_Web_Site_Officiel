@@ -14,7 +14,11 @@ import {
   X,
   Calendar,
   Tag,
+  Shield,
+  Award,
+  CheckCircle,
 } from 'lucide-react';
+import Link from 'next/link';
 
 // Type pour une offre avec image
 interface Offer {
@@ -29,6 +33,7 @@ interface Offer {
   imageUrl: string;
   validUntil?: string;
   price?: string;
+  features?: string[];
 }
 
 const offers: Offer[] = [
@@ -36,16 +41,17 @@ const offers: Offer[] = [
     id: 1,
     title: 'Pack Identité Visuelle Complet',
     description: 'Logo, charte graphique, cartes de visite, flyers et kit branding complet.',
-    longDescription:'Nous créons une identité visuelle professionnelle et cohérente pour votre entreprise : logo unique, choix du nom, palette de couleurs, typographie, cartes de visite, flyers et templates réseaux sociaux. Un pack complet prêt à l’utilisation pour renforcer votre image de marque.',
+    longDescription: 'Nous créons une identité visuelle professionnelle et cohérente pour votre entreprise : logo unique, choix du nom, palette de couleurs, typographie, cartes de visite, flyers et templates réseaux sociaux. Un pack complet prêt à l’utilisation pour renforcer votre image de marque.',
     badge: 'NEW',
     icon: TrendingUp,
     gradient: 'from-[#9b596d] to-[#4d767c]',
     link: '#',
     imageUrl: '/new/designe.png',
     validUntil: 'Offre disponible',
-    price: 'à partir de 499€',
+    price: 'à partir de 499$',
+    features: ['Logo unique', 'Charte graphique complète', 'Cartes de visite', 'Flyers personnalisés', 'Templates réseaux sociaux'],
   },
-    {
+  {
     id: 2,
     title: 'Création Site Web & Lancement Digital',
     description: 'Site web + design offert + SEO + hébergement gratuit 1 an.',
@@ -56,41 +62,38 @@ const offers: Offer[] = [
     link: '#',
     imageUrl: '/new/web.png',
     validUntil: 'Offre limitée',
-    price: 'à partir de 790€',
+    price: 'à partir de 790$',
+    features: ['Site web professionnel', 'Design moderne offert', 'Création de logo incluse', 'Optimisation SEO', 'Hébergement 1 an gratuit'],
   },
- 
-
-
-
-    {
+  {
     id: 3,
     title: 'ERP & Digitalisation des Entreprises',
     description: 'Analyse gratuite + développement ERP + consulting + suivi.',
     longDescription: 'Nous accompagnons les entreprises dans leur transformation digitale avec une analyse gratuite de leur infrastructure existante, des services de consulting stratégique, des recommandations d’amélioration et le développement de solutions ERP sur mesure. Support continu et haute disponibilité garantis.',
-   badge: 'LIMITED',
+    badge: 'LIMITED',
     icon: Gift,
     gradient: 'from-[#9b596d] to-[#c0847c]',
     link: '#',
     imageUrl: '/new/erp.png',
     validUntil: 'Service continu',
     price: 'Sur devis',
+    features: ['Analyse gratuite', 'Consulting stratégique', 'ERP sur mesure', 'Support continu', 'Haute disponibilité'],
   },
-  
 ];
 
 const ads = [
   {
-  side: 'left',
-  title: 'Lancez votre MVP en 30 jours',
-  description: 'Profitez d’une offre de lancement exclusive : audit gratuit, accompagnement prioritaire et stratégie produit optimisée pour un démarrage rapide et efficace.',
-  cta: 'Démarrer mon projet',
-  icon: Rocket,
-  color: '#9b596d',
-},
+    side: 'left',
+    title: 'Lancez votre MVP en 30 jours',
+    description: 'Profitez d’une offre de lancement exclusive : audit gratuit, accompagnement prioritaire et stratégie produit optimisée pour un démarrage rapide et efficace.',
+    cta: 'Démarrer mon projet',
+    icon: Rocket,
+    color: '#9b596d',
+  },
   {
     side: 'right',
     title: 'Atelier Innovation offert',
-    description: 'Toute entreprise qui fait appel à nos services pour une solution de digitalisation ou un ERP bénéficiera également d’un accès exclusif à des salons et conférences, où nous présentons les nouvelles technologies utilisées pour optimiser les activités internes, ainsi que des retours d’expérience sur des réussites business basées sur l’intelligence artificielle et des outils technologiques avancés.',
+    description: 'Toute entreprise qui fait appel à nos services pour une solution de digitalisation ou un ERP bénéficiera également d’un accès exclusif à des salons et conférences.',
     cta: 'Réserver ma place',
     icon: Eye,
     color: '#4d767c',
@@ -197,7 +200,7 @@ const OffersAndNews: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">{ads[0].title}</h3>
                 <p className="text-gray-600 mb-5 flex-1 leading-relaxed">{ads[0].description}</p>
-                <a href="/services" target='_blanck' className="inline-flex items-center gap-2 text-[#9b596d] font-semibold hover:gap-3 transition-all group/link">
+                <a href="/contact" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#9b596d] font-semibold hover:gap-3 transition-all group/link">
                   <span>{ads[0].cta}</span>
                   <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
                 </a>
@@ -211,9 +214,9 @@ const OffersAndNews: React.FC = () => {
               {offers.map((offer, idx) => {
                 const Icon = offer.icon;
                 const badgeConfig = {
-                  NEW: { label: '🔥 NOUVEAU', color: 'bg-[#9b596d]' },
-                  PROMO: { label: '⚡ PROMO', color: 'bg-[#4d767c]' },
-                  LIMITED: { label: '⏳ LIMITÉ', color: 'bg-amber-500' },
+                  NEW: { label: 'NOUVEAU', icon: '🔥', color: 'bg-[#9b596d]' },
+                  PROMO: { label: 'PROMO', icon: '⚡', color: 'bg-[#4d767c]' },
+                  LIMITED: { label: 'LIMITÉ', icon: '⏳', color: 'bg-amber-500' },
                 }[offer.badge];
                 return (
                   <div
@@ -222,16 +225,17 @@ const OffersAndNews: React.FC = () => {
                     className="group relative bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer animate-on-scroll opacity-0 translate-y-10 transition-all duration-700"
                     style={{ transitionDelay: `${idx * 0.1}s` }}
                   >
-                    {/* Image de l'offre */}
-                    <div className="relative h-40 overflow-hidden">
+                    {/* Image de l'offre - avec object-contain pour image complète */}
+                    <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
                       <img
                         src={offer.imageUrl}
                         alt={offer.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                      <div className={`absolute top-3 right-3 ${badgeConfig.color} text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-lg z-10`}>
-                        {badgeConfig.label}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className={`absolute top-3 right-3 ${badgeConfig.color} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg z-10 flex items-center gap-1`}>
+                        <span>{badgeConfig.icon}</span>
+                        <span>{badgeConfig.label}</span>
                       </div>
                     </div>
                     <div className="p-5">
@@ -240,7 +244,12 @@ const OffersAndNews: React.FC = () => {
                       </div>
                       <h3 className="text-lg font-bold text-gray-800 mb-1 group-hover:text-[#9b596d] transition-colors line-clamp-1">{offer.title}</h3>
                       <p className="text-gray-600 text-sm mb-4 line-clamp-2">{offer.description}</p>
-                      <div className="flex items-center justify-between">
+                      {offer.price && (
+                        <div className="inline-block bg-[#9b596d]/10 text-[#9b596d] text-xs font-semibold px-2 py-1 rounded-full mb-3">
+                          {offer.price}
+                        </div>
+                      )}
+                      <div className="flex items-center justify-between mt-2">
                         <span className="text-xs text-[#4d767c] font-medium">En savoir plus</span>
                         <ChevronRight size={14} className="text-[#4d767c] group-hover:translate-x-1 transition-transform" />
                       </div>
@@ -251,23 +260,7 @@ const OffersAndNews: React.FC = () => {
               })}
             </div>
 
-            {/* Compte à rebours */}
-            <div className="mt-8 bg-white/70 backdrop-blur-md rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border border-[#9b596d]/20 shadow-md transition-all hover:shadow-lg">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-[#9b596d]/10 rounded-full">
-                  <Clock className="text-[#9b596d]" size={22} />
-                </div>
-                <span className="font-bold text-gray-700">Offres valables encore </span>
-              </div>
-              <div className="flex gap-3 text-center">
-                {Object.entries(timeLeft).map(([unit, value]) => (
-                  <div key={unit} className="bg-white rounded-xl px-3 py-2 min-w-[60px] shadow-sm border border-gray-100">
-                    <span className="block text-2xl font-black text-[#9b596d]">{value}</span>
-                    <span className="text-xs text-gray-500 capitalize">{unit}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+           
           </div>
 
           {/* Annonce droite */}
@@ -280,95 +273,113 @@ const OffersAndNews: React.FC = () => {
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">{ads[1].title}</h3>
-                <p className="text-gray-600 mb-5 flex-1 leading-relaxed">{ads[1].description}</p>
-                <a href="/services" target='_blanck' className="inline-flex items-center gap-2 text-[#4d767c] font-semibold hover:gap-3 transition-all group/link">
-                  <span>{ads[1].cta}</span>
-                  <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
-                </a>
+                <p className="text-gray-600 mb-5 flex-1 leading-relaxed line-clamp-4">{ads[1].description}</p>
+             
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bannière basse */}
-        <div style={{marginTop:"200px"}} className="mt-16 bg-gradient-to-r from-[#9b596d] to-[#4d767c] rounded-2xl p-6 text-white shadow-xl animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-300">
+        {/* Bannière basse améliorée */}
+        <div className="mt-16 bg-gradient-to-r from-[#9b596d] to-[#4d767c] rounded-2xl p-6 text-white shadow-xl animate-on-scroll opacity-0 translate-y-10 transition-all duration-700 delay-300">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <div className="flex items-center gap-4">
-              <div className="p-2 bg-white/20 rounded-full backdrop-blur-sm">
+              <div className="p-3 bg-white/20 rounded-full backdrop-blur-sm">
                 <Sparkles size={28} />
               </div>
               <div>
                 <h4 className="font-black text-xl flex items-center gap-2">
                   Solution innovante du mois
-                  <Star size={16} className="fill-yellow-300 text-yellow-300" />
                 </h4>
-                <p className="text-white/90 text-sm">Nexolia Pulse – L’IA au service de votre croissance</p>
+                <p className="text-white/90 text-sm">Nexolia Pulse – L'IA au service de votre croissance</p>
               </div>
             </div>
-            <a href="#" className="group bg-white text-[#9b596d] px-6 py-2.5 rounded-full font-bold hover:shadow-xl transition-all flex items-center gap-2 hover:gap-3">
+            <Link href="/portfolio" className="group bg-white text-[#9b596d] px-6 py-2.5 rounded-full font-bold hover:shadow-xl transition-all flex items-center gap-2 hover:gap-3">
               Découvrir
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* MODALE POPUP pour l'offre sélectionnée */}
+      {/* MODALE POPUP améliorée pour l'offre sélectionnée */}
       {selectedOffer && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in"
           onClick={() => setSelectedOffer(null)}
         >
           <div
-            className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-scale-up"
+            className="relative bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-scale-up"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedOffer(null)}
-              className="absolute top-4 right-4 z-20 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all"
+              className="absolute top-4 right-4 z-20 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all hover:scale-110"
             >
               <X size={20} />
             </button>
-            <div className="relative h-64 md:h-80 overflow-hidden rounded-t-2xl">
+            
+            {/* Image avec object-contain pour affichage complet */}
+            <div className="relative h-80 md:h-96 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 rounded-t-2xl">
               <img
                 src={selectedOffer.imageUrl}
                 alt={selectedOffer.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain p-8"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className={`absolute top-4 left-4 ${selectedOffer.badge === 'NEW' ? 'bg-[#9b596d]' : selectedOffer.badge === 'PROMO' ? 'bg-[#4d767c]' : 'bg-amber-500'} text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg`}>
-                {selectedOffer.badge === 'NEW' && '🔥 NOUVEAU'}
-                {selectedOffer.badge === 'PROMO' && '⚡ PROMO'}
-                {selectedOffer.badge === 'LIMITED' && '⏳ LIMITÉ'}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className={`absolute top-4 left-4 flex items-center gap-2 ${selectedOffer.badge === 'NEW' ? 'bg-[#9b596d]' : selectedOffer.badge === 'PROMO' ? 'bg-[#4d767c]' : 'bg-amber-500'} text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg`}>
+                <span>{selectedOffer.badge === 'NEW' && '🔥'}{selectedOffer.badge === 'PROMO' && '⚡'}{selectedOffer.badge === 'LIMITED' && '⏳'}</span>
+                <span>{selectedOffer.badge === 'NEW' && 'NOUVEAU'}{selectedOffer.badge === 'PROMO' && 'PROMO'}{selectedOffer.badge === 'LIMITED' && 'LIMITÉ'}</span>
               </div>
             </div>
+            
             <div className="p-6 md:p-8">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
                 {selectedOffer.price && (
-                  <span className="inline-flex items-center gap-1 bg-[#9b596d]/10 text-[#9b596d] text-sm font-semibold px-2 py-1 rounded-full">
+                  <span className="inline-flex items-center gap-2 bg-[#9b596d]/10 text-[#9b596d] text-sm font-semibold px-3 py-1.5 rounded-full">
                     <Tag size={14} />
                     {selectedOffer.price}
                   </span>
                 )}
                 {selectedOffer.validUntil && (
-                  <span className="inline-flex items-center gap-1 bg-[#4d767c]/10 text-[#4d767c] text-sm font-semibold px-2 py-1 rounded-full">
+                  <span className="inline-flex items-center gap-2 bg-[#4d767c]/10 text-[#4d767c] text-sm font-semibold px-3 py-1.5 rounded-full">
                     <Calendar size={14} />
                     {selectedOffer.validUntil}
                   </span>
                 )}
               </div>
+              
               <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">{selectedOffer.title}</h3>
-              <p className="text-gray-600 leading-relaxed mb-6">{selectedOffer.longDescription}</p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <p className="text-gray-600 leading-relaxed mb-6 text-base">{selectedOffer.longDescription}</p>
+              
+              {/* Features list */}
+              {selectedOffer.features && selectedOffer.features.length > 0 && (
+                <div className="mb-6">
+                  <h4 className="font-semibold text-gray-800 mb-3 flex items-center gap-2">
+                    <Shield size={18} className="text-[#9b596d]" />
+                    Ce qui est inclus :
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {selectedOffer.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-sm text-gray-600">
+                        <CheckCircle size={14} className="text-[#4d767c] flex-shrink-0" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-100">
                 <a
-                  href={selectedOffer.link}
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#9b596d] to-[#4d767c] text-white font-semibold py-3 px-6 rounded-xl hover:shadow-lg transition-all hover:gap-3"
+                  href={"/contact"}
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#9b596d] to-[#4d767c] text-white font-semibold py-3 px-8 rounded-xl hover:shadow-lg transition-all hover:gap-3 hover:scale-105"
                 >
                   Je profite de cette offre <ArrowRight size={18} />
                 </a>
                 <button
                   onClick={() => setSelectedOffer(null)}
-                  className="inline-flex items-center justify-center gap-2 border border-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-xl hover:bg-gray-50 transition-all"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-700 font-semibold py-3 px-8 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all"
                 >
                   Fermer
                 </button>
@@ -423,6 +434,12 @@ const OffersAndNews: React.FC = () => {
         .line-clamp-2 {
           display: -webkit-box;
           -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .line-clamp-4 {
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }

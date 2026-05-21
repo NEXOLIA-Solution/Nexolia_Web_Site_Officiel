@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import QuoteRequestButton from "./QuoteRequestButton"
+import Link from "next/link"
 
 export default function ServiceGrid({ services }: { services: any[] }) {
     const [selectedService, setSelectedService] = useState<any>(null)
@@ -151,7 +152,21 @@ export default function ServiceGrid({ services }: { services: any[] }) {
                                     >
                                         Fermer
                                     </Button>
-                                    <QuoteRequestButton />
+                                    <Link
+    href={"/contact"}
+    className="
+        inline-flex items-center
+        px-5 py-3
+        rounded-lg
+        bg-[#3f3f3f]
+        hover:bg-[green]
+        text-white
+        font-medium
+        transition-all duration-300
+    "
+>
+    Demander un devis gratuitement
+</Link>
                                 </div>
 
                             </div>

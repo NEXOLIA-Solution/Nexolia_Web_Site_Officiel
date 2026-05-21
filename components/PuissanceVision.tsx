@@ -9,6 +9,7 @@ import {
   BarChart3,
   Users,
 } from 'lucide-react';
+import Link from 'next/link';
 
 // Données pour les métriques de puissance
 const metrics = [
@@ -160,13 +161,13 @@ const PuissanceVision: React.FC = () => {
 
         {/* Call-to-action subtil */}
         <div className="mt-20 text-center animate-on-scroll opacity-0 transition-all duration-700 delay-600">
-          <a
-            href="#contact"
+          <Link
+            href="/about"
             className="inline-flex items-center gap-2 bg-white hover:bg-gradient-to-r hover:from-[#9b596d] hover:to-[#4d767c] hover:text-white border border-[#9b596d] text-[#9b596d] font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-xl"
           >
-            Rejoignez notre vision
+              Explorer notre entreprise
             <Rocket size={18} />
-          </a>
+          </Link>
         </div>
       </div>
 

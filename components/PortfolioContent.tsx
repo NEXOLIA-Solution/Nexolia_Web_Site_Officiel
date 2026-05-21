@@ -343,16 +343,8 @@ export default function PortfolioPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button
-                size="lg"
-                onClick={handleNavigate}
-                className="bg-gradient-to-r from-[#53828a] to-[#b05f76] hover:from-[#53828a]/90 hover:to-[#b05f76]/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                <Eye className="mr-2 w-5 h-5" />
-                Explorer Nos Projets
-              </Button>
+             
 
-              <QuoteRequestButton />
             </div>
           </div>
         </div>

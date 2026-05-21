@@ -1,6 +1,7 @@
 // components/NexoliaPresentation.tsx
 import React, { useState } from 'react';
 import TechStack from './TechStack';
+import Link from 'next/link';
 
 /**
  * Composant de présentation pour Nexolia Consulting
@@ -41,31 +42,31 @@ const NexoliaPresentation: React.FC = () => {
   const icons = {
     rocket: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
           d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
     cloud: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
           d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
       </svg>
     ),
     strategy: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
           d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
     infrastructure: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
           d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
       </svg>
     ),
     shield: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
           d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
@@ -76,25 +77,25 @@ const NexoliaPresentation: React.FC = () => {
     ),
     smile: (
       <svg className="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
           d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
     target: (
       <svg className="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
           d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
     building: (
       <svg className="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
           d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
       </svg>
     ),
     support: (
       <svg className="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
           d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m0 5.656l3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
       </svg>
     ),
@@ -111,7 +112,7 @@ const NexoliaPresentation: React.FC = () => {
   };
 
   const getAccentColor = (accent: string) => {
-    switch(accent) {
+    switch (accent) {
       case 'rose1': return colors.accents.rose1;
       case 'rose2': return colors.accents.rose2;
       case 'sage': return colors.accents.sage;
@@ -184,53 +185,59 @@ const NexoliaPresentation: React.FC = () => {
 
 
   return (
-    <div 
+    <div
       className="min-h-screen"
       style={{ backgroundColor: colors.background }}
     >
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        
+
         {/* Hero Section */}
         <header className="text-center mb-20 relative" id="hero">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-3xl animate-pulse"
-                 style={{ background: `radial-gradient(circle, ${colors.accents.rose1}, ${colors.accents.sage})` }}></div>
+              style={{ background: `radial-gradient(circle, ${colors.accents.rose1}, ${colors.accents.sage})` }}></div>
           </div>
-          
+
           <div className="relative">
             <div className="inline-block p-4 rounded-2xl shadow-2xl mb-6 transform transition-all duration-500 hover:rotate-3 hover:scale-110"
-                 style={{ 
-                   background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.rose2})`,
-                   boxShadow: `0 20px 40px ${colors.accents.rose1}40`,
-                   color: 'white'
-                 }}>
+              style={{
+                background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.rose2})`,
+                boxShadow: `0 20px 40px ${colors.accents.rose1}40`,
+                color: 'white'
+              }}>
               {icons.rocket}
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6"
-                style={{ color: colors.textPrimary }}>
+              style={{ color: colors.textPrimary }}>
               Nexolia
               <span className="ml-3 px-4 py-2 rounded-xl text-white inline-block transform hover:scale-105 transition-transform"
-                    style={{ background: `linear-gradient(135deg, ${colors.accents.rose2}, ${colors.accents.sage})` }}>
+                style={{ background: `linear-gradient(135deg, ${colors.accents.rose2}, ${colors.accents.sage})` }}>
                 Consulting
               </span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl max-w-3xl mx-auto font-light mb-8"
-               style={{ color: colors.textSecondary }}>
+              style={{ color: colors.textSecondary }}>
               Partenaire stratégique de votre transformation digitale
             </p>
-            
+
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="group px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center"
-                      style={{ 
-                        background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.rose2})`,
-                        color: 'white'
-                      }}>
-                Démarrer un projet
-                {icons.arrowRight}
-              </button>
-            
+              <Link
+                href="/contact"
+                className="group px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center gap-2"
+                style={{
+                  background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.rose2})`,
+                  color: "white",
+                }}
+              >
+                <span>Démarrer un projet</span>
+
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  {icons.arrowRight}
+                </span>
+              </Link>
+
             </div>
           </div>
         </header>
@@ -238,16 +245,16 @@ const NexoliaPresentation: React.FC = () => {
         {/* Description Section */}
         <section className="mb-20" id="about">
           <div className="rounded-3xl p-8 md:p-12 transition-all duration-500 hover:shadow-2xl"
-               style={{ 
-                 backgroundColor: colors.cardBg,
-                 boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
-               }}>
+            style={{
+              backgroundColor: colors.cardBg,
+              boxShadow: '0 4px 20px rgba(0,0,0,0.05)'
+            }}>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center"
-                    style={{ color: colors.textPrimary }}>
+                  style={{ color: colors.textPrimary }}>
                   <span className="w-10 h-10 rounded-full flex items-center justify-center mr-3"
-                        style={{ background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.sage})` }}>
+                    style={{ background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.sage})` }}>
                     <span style={{ color: 'white', fontSize: '1.2rem' }}>✨</span>
                   </span>
                   Qui sommes-nous ?
@@ -269,10 +276,10 @@ const NexoliaPresentation: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 {statistics.map((stat, idx) => (
                   <div key={idx} className="text-center p-4 rounded-2xl transition-all hover:scale-105"
-                       style={{ 
-                         background: idx % 2 === 0 ? `${colors.accents.rose1}10` : `${colors.accents.sage}10`,
-                         border: `1px solid ${idx % 2 === 0 ? colors.accents.rose1 : colors.accents.sage}20`
-                       }}>
+                    style={{
+                      background: idx % 2 === 0 ? `${colors.accents.rose1}10` : `${colors.accents.sage}10`,
+                      border: `1px solid ${idx % 2 === 0 ? colors.accents.rose1 : colors.accents.sage}20`
+                    }}>
                     <div style={{ color: idx % 2 === 0 ? colors.accents.rose1 : colors.accents.sage }}>
                       {stat.icon}
                     </div>
@@ -296,20 +303,20 @@ const NexoliaPresentation: React.FC = () => {
             <p className="text-xl" style={{ color: colors.textSecondary }}>
               Des solutions innovantes pour votre transformation digitale
             </p>
-            <div className="mt-4 h-1 w-20 mx-auto rounded-full" 
-                 style={{ background: `linear-gradient(90deg, ${colors.accents.rose1}, ${colors.accents.sage})` }}></div>
+            <div className="mt-4 h-1 w-20 mx-auto rounded-full"
+              style={{ background: `linear-gradient(90deg, ${colors.accents.rose1}, ${colors.accents.sage})` }}></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, idx) => {
               const accentColor = getAccentColor(service.colorAccent);
               const isRoseAccent = service.colorAccent === 'rose1' || service.colorAccent === 'rose2';
-              
+
               return (
                 <div
                   key={idx}
                   className="rounded-2xl p-6 transition-all duration-500 cursor-pointer transform hover:-translate-y-2 group"
-                  style={{ 
+                  style={{
                     backgroundColor: colors.cardBg,
                     border: `2px solid ${hoveredCard === idx ? accentColor : '#e2e8f0'}`,
                     boxShadow: hoveredCard === idx ? `0 20px 40px ${accentColor}20` : '0 4px 6px rgba(0,0,0,0.05)'
@@ -319,10 +326,10 @@ const NexoliaPresentation: React.FC = () => {
                 >
                   <div className="flex items-start mb-4">
                     <div className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
-                         style={{ 
-                           background: `linear-gradient(135deg, ${accentColor}20, ${accentColor}10)`,
-                           color: accentColor
-                         }}>
+                      style={{
+                        background: `linear-gradient(135deg, ${accentColor}20, ${accentColor}10)`,
+                        color: accentColor
+                      }}>
                       {service.icon}
                     </div>
                     <div className="ml-4 flex-1">
@@ -334,12 +341,12 @@ const NexoliaPresentation: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                  
+
                   <ul className="space-y-3 mt-6">
                     {service.items.map((item, i) => (
                       <li key={i} className="flex items-start group/item">
                         <span className="mt-0.5 mr-3 flex-shrink-0 transition-all duration-300 group-hover/item:scale-110"
-                              style={{ color: isRoseAccent ? colors.accents.rose1 : colors.accents.sage }}>
+                          style={{ color: isRoseAccent ? colors.accents.rose1 : colors.accents.sage }}>
                           {icons.check}
                         </span>
                         <span style={{ color: colors.textSecondary }}>{item}</span>
@@ -349,11 +356,11 @@ const NexoliaPresentation: React.FC = () => {
 
                   <div className="mt-6">
                     <span className="text-xs px-3 py-1 rounded-full font-medium"
-                          style={{ 
-                            backgroundColor: `${accentColor}15`,
-                            color: accentColor,
-                            border: `1px solid ${accentColor}30`
-                          }}>
+                      style={{
+                        backgroundColor: `${accentColor}15`,
+                        color: accentColor,
+                        border: `1px solid ${accentColor}30`
+                      }}>
                       {service.colorAccent === 'rose1' && '🚀 Innovation'}
                       {service.colorAccent === 'rose2' && '🎯 Stratégie'}
                       {service.colorAccent === 'sage' && '⚙️ Excellence'}
@@ -368,23 +375,23 @@ const NexoliaPresentation: React.FC = () => {
         {/* Section Notre Force */}
         <section className="mb-20">
           <div className="rounded-3xl p-8 md:p-12 relative overflow-hidden"
-               style={{ 
-                 background: `linear-gradient(135deg, ${colors.accents.rose1}08, ${colors.accents.sage}08)`,
-                 border: `1px solid ${colors.accents.rose1}20`
-               }}>
-            
+            style={{
+              background: `linear-gradient(135deg, ${colors.accents.rose1}08, ${colors.accents.sage}08)`,
+              border: `1px solid ${colors.accents.rose1}20`
+            }}>
+
             <div className="absolute top-0 right-0 w-64 h-64 opacity-5">
               <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                 <path fill={colors.accents.rose1} d="M69.5,-58.2C87.5,-40.1,96.6,-14.8,92.4,8.5C88.2,31.8,70.7,53.1,49.2,66.3C27.7,79.5,2.2,84.6,-21.5,76.7C-45.2,68.8,-67.1,47.9,-75.4,22.9C-83.7,-2.1,-78.4,-31.2,-62.3,-49.3C-46.2,-67.4,-19.4,-74.5,5.6,-78.8C30.6,-83.1,51.5,-76.3,69.5,-58.2Z" transform="translate(100 100)" />
               </svg>
             </div>
-            
+
             <div className="relative z-10">
               <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="flex-1">
                   <h2 className="text-3xl font-bold mb-6 flex items-center" style={{ color: colors.textPrimary }}>
                     <span className="w-10 h-10 rounded-full flex items-center justify-center mr-3"
-                          style={{ background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.rose2})` }}>
+                      style={{ background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.rose2})` }}>
                       {icons.shield}
                     </span>
                     Notre force
@@ -400,15 +407,15 @@ const NexoliaPresentation: React.FC = () => {
                     pour accompagner durablement les entreprises vers la performance.
                   </p>
                 </div>
-                
+
                 <div className="flex-shrink-0 flex gap-3">
                   <div className="text-center p-4 rounded-xl min-w-[120px] transition-all hover:scale-105"
-                       style={{ backgroundColor: `${colors.accents.rose1}15`, border: `1px solid ${colors.accents.rose1}30` }}>
+                    style={{ backgroundColor: `${colors.accents.rose1}15`, border: `1px solid ${colors.accents.rose1}30` }}>
                     <div className="text-3xl font-bold" style={{ color: colors.accents.rose1 }}>95%</div>
                     <div className="text-sm mt-1" style={{ color: colors.textSecondary }}>satisfaction</div>
                   </div>
                   <div className="text-center p-4 rounded-xl min-w-[120px] transition-all hover:scale-105"
-                       style={{ backgroundColor: `${colors.accents.sage}15`, border: `1px solid ${colors.accents.sage}30` }}>
+                    style={{ backgroundColor: `${colors.accents.sage}15`, border: `1px solid ${colors.accents.sage}30` }}>
                     <div className="text-3xl font-bold" style={{ color: colors.accents.sage }}>100%</div>
                     <div className="text-sm mt-1" style={{ color: colors.textSecondary }}>succès</div>
                   </div>
@@ -419,46 +426,9 @@ const NexoliaPresentation: React.FC = () => {
         </section>
 
         {/* Technologies Section */}
-        <TechStack/>
+        <TechStack />
 
-        {/* CTA Final */}
-        <section className="text-center">
-          <div className="rounded-3xl p-12 relative overflow-hidden group"
-               style={{ 
-                 background: `linear-gradient(135deg, ${colors.accents.rose1}12, ${colors.accents.rose2}12, ${colors.accents.sage}12)`,
-                 border: `1px solid ${colors.accents.rose1}20`
-               }}>
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: colors.textPrimary }}>
-                Prêt à transformer votre entreprise ?
-              </h2>
-              <p className="text-xl mb-8" style={{ color: colors.textSecondary }}>
-                Contactez-nous dès aujourd'hui pour un diagnostic gratuit
-              </p>
-              <button className="group px-10 py-4 rounded-full font-bold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center"
-                      style={{ background: `linear-gradient(135deg, ${colors.accents.rose1}, ${colors.accents.rose2}, ${colors.accents.sage})` }}>
-                Discutons de votre projet
-                {icons.arrowRight}
-              </button>
-            </div>
-          </div>
-          
-          <footer className="mt-12 pt-8 border-t" style={{ borderColor: '#e2e8f0' }}>
-            <p className="text-sm" style={{ color: colors.textSecondary }}>
-              © 2024 Nexolia Consulting — L'innovation au service de votre performance
-            </p>
-            <div className="flex justify-center gap-3 mt-4">
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: colors.accents.rose1 }}></span>
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: colors.accents.rose2 }}></span>
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: colors.accents.sage }}></span>
-            </div>
-            <div className="flex justify-center gap-6 mt-4 text-xs" style={{ color: colors.textSecondary }}>
-              <a href="#" className="hover:opacity-70 transition-opacity">Mentions légales</a>
-              <a href="#" className="hover:opacity-70 transition-opacity">Confidentialité</a>
-              <a href="#" className="hover:opacity-70 transition-opacity">CGV</a>
-            </div>
-          </footer>
-        </section>
+        
       </div>
 
       <style>{`

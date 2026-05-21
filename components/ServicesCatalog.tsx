@@ -671,7 +671,7 @@ const ServicesCatalog: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white" style={{height: "55vh"}}>
+      <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white" style={{height: "45vh"}}>
         <div className="absolute inset-0 bg-black/50 z-0"></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
@@ -687,15 +687,7 @@ const ServicesCatalog: React.FC = () => {
               de la simple vitrine à l'écosystème digital complexe
             </p>
             
-            <div className="flex flex-wrap gap-4 justify-center">
-              <button className="group bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold py-2.5 px-6 sm:py-3 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base">
-                Découvrir nos solutions
-                <ChevronRight className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="group bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 text-white font-semibold py-2.5 px-6 sm:py-3 sm:px-8 rounded-full transition-all duration-300 text-sm sm:text-base">
-                Demander un devis
-              </button>
-            </div>
+          
           </div>
         </div>
         

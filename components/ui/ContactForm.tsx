@@ -412,7 +412,7 @@ const ContactForm: React.FC = () => {
                   Remplissez ce formulaire et notre équipe vous contactera sous 24h pour une première analyse gratuite de votre projet
                 </p>
               </CardHeader>
-              <CardContent className="px-6 sm:px-8 pb-8">
+              <CardContent className="px-6 sm:px-8 pb-8" style={{background:"#f7fff3",paddingTop:"15px"}}>
                 <AnimatePresence mode="wait">
                   {submitSuccess ? (
                     <motion.div
@@ -435,7 +435,7 @@ const ContactForm: React.FC = () => {
                       onSubmit={handleSubmit}
                       className="space-y-6"
                     >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6" >
                         <motion.div variants={itemVariants}>
                           <label className="block text-sm font-semibold text-[#53828a] mb-2">Prénom *</label>
                           <Input

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Cpu, ArrowRight, Sparkles, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 // Types pour les props
 interface HeroPageServiceProps {
@@ -104,13 +105,7 @@ const HeroPageService: React.FC<HeroPageServiceProps> = ({
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           
-          {/* Badge Animé */}
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#53828a] to-[#b05f76] shadow-lg shadow-[#53828a]/20 mb-8 transform transition-all duration-500 hover:scale-105 hover:shadow-xl animate-fade-in-up">
-            <Sparkles className="w-4 h-4 text-white animate-pulse" />
-            <span className="text-white font-semibold tracking-wide text-sm">
-              {badgeText}
-            </span>
-          </div>
+      
 
           {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-bold mb-6 leading-tight animate-fade-in-up animation-delay-200">
@@ -129,55 +124,36 @@ const HeroPageService: React.FC<HeroPageServiceProps> = ({
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16 animate-fade-in-up animation-delay-600">
-            <Button
-              size="lg"
-              onClick={handleNavigate}
-              className="group relative overflow-hidden bg-gradient-to-r from-[#53828a] to-[#b05f76] hover:shadow-2xl hover:shadow-[#53828a]/30 text-white border-0 transition-all duration-300 hover:scale-105 px-8 py-6 text-base rounded-full"
-            >
-              <span className="relative z-10 flex items-center">
-                {ctaText}
-                <ChevronRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#b05f76] to-[#53828a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Button>
 
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={handleQuoteRequest}
-              className="group relative overflow-hidden border-2 border-[#53828a] text-[#53828a] hover:text-white transition-all duration-300 hover:scale-105 px-8 py-6 text-base rounded-full bg-white/50 backdrop-blur-sm"
-            >
-              <span className="relative z-10 flex items-center">
-                {quoteText}
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#53828a] to-[#b05f76] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Button>
-          </div>
+  {/* About Link */}
+  <Link
+    href="/portfolio"
+    className="group relative overflow-hidden bg-gradient-to-r from-[#53828a] to-[#b05f76] hover:shadow-2xl hover:shadow-[#53828a]/30 text-white border-0 transition-all duration-300 hover:scale-105 px-8 py-6 text-base rounded-full"
+  >
+    <span className="relative z-10 flex items-center font-medium">
+      Découvrir nos solutions
+      <ChevronRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+    </span>
 
-          {/* Stats Section */}
-          {showStats && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto pt-8 border-t border-gray-200/50 animate-fade-in-up animation-delay-800">
-              <div className="text-center group hover:scale-105 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#53828a] to-[#b05f76] bg-clip-text text-transparent">
-                  {animatedNumbers.clients}+
-                </div>
-                <div className="text-sm text-gray-500 mt-2">Clients Satisfaits</div>
-              </div>
-              <div className="text-center group hover:scale-105 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#53828a] to-[#b05f76] bg-clip-text text-transparent">
-                  {animatedNumbers.projects}+
-                </div>
-                <div className="text-sm text-gray-500 mt-2">Projets Réalisés</div>
-              </div>
-              <div className="text-center group hover:scale-105 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#53828a] to-[#b05f76] bg-clip-text text-transparent">
-                  {animatedNumbers.satisfaction}%
-                </div>
-                <div className="text-sm text-gray-500 mt-2">Taux de Satisfaction</div>
-              </div>
-            </div>
-          )}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#b05f76] to-[#53828a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </Link>
+
+  {/* Contact Link */}
+  <Link
+    href="/contact"
+    className="group relative overflow-hidden border-2 border-[#53828a] text-[#53828a] hover:text-white transition-all duration-300 hover:scale-105 px-8 py-6 text-base rounded-full bg-white"
+  >
+    <span className="relative z-10 flex items-center font-medium">
+      Demander un devis gratuitement
+      <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+    </span>
+
+    <div className="absolute inset-0 bg-gradient-to-r from-[#53828a] to-[#b05f76] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </Link>
+
+</div>
+
+       
         </div>
       </div>
 

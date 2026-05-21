@@ -56,7 +56,7 @@ export default function ServicesContent() {
       technologies: ["AWS", "Azure", "Docker", "Kubernetes", "GraphQL"],
       gradient: "from-purple-500 to-pink-500",
       popular: false,
-      images: ["/saas/saas.webp", "/saas/saas1.webp", "/saas/saas2.webp", "/saas/saas3.webp", "/saas/saas4.webp"],
+      images: ["/saas/1.png", "/saas/saas1.webp", "/saas/5.png", "/saas/saas3.webp", "/saas/saas4.webp"],
     },
     {
       icon: <Palette className="w-8 h-8" />,

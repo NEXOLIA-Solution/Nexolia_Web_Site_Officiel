@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   FaLaptopCode, FaPaintBrush, FaChartLine, FaShareAlt,
   FaDatabase, FaCloud, FaServer, FaChevronLeft, FaChevronRight,
-  FaThLarge, FaInfoCircle, FaUsers, FaChartBar, FaPlay, FaPause
+  FaThLarge, FaInfoCircle, FaUsers, FaChartBar, FaPlay, FaPause, FaTimes
 } from 'react-icons/fa';
 
 interface Service {
@@ -23,6 +23,8 @@ const NexoliaServicesEnhanced: React.FC = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [isAutoScrolling, setIsAutoScrolling] = useState<boolean>(true);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalImageIndex, setModalImageIndex] = useState<number>(0);
   const galleryRef = useRef<HTMLDivElement>(null);
   const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -206,7 +208,7 @@ const NexoliaServicesEnhanced: React.FC = () => {
       if (selectedService && isAutoScrolling) {
         setSelectedImageIndex((prev) => (prev + 1) % selectedService.images.length);
       }
-    }, 3000); // Change d'image toutes les 3 secondes
+    }, 3000);
   };
 
   // Fonction pour arrêter le défilement automatique
@@ -220,18 +222,65 @@ const NexoliaServicesEnhanced: React.FC = () => {
   // Fonction pour faire défiler vers la galerie
   const scrollToGallery = () => {
     if (galleryRef.current) {
-      const yOffset = -80; // Offset pour éviter que le header cache le contenu
+      const yOffset = -80;
       const element = galleryRef.current;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
+  // Ouvrir la modale
+  const openModal = (index: number) => {
+    stopAutoScroll();
+    setModalImageIndex(index);
+    setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Fermer la modale
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = 'unset';
+    if (isAutoScrolling) {
+      startAutoScroll();
+    }
+  };
+
+  // Navigation dans la modale
+  const nextModalImage = () => {
+    if (selectedService) {
+      setModalImageIndex((prev) => (prev + 1) % selectedService.images.length);
+    }
+  };
+
+  const prevModalImage = () => {
+    if (selectedService) {
+      setModalImageIndex((prev) => (prev - 1 + selectedService.images.length) % selectedService.images.length);
+    }
+  };
+
+  // Gestion des touches du clavier pour la modale
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isModalOpen) {
+        if (e.key === 'Escape') {
+          closeModal();
+        } else if (e.key === 'ArrowLeft') {
+          prevModalImage();
+        } else if (e.key === 'ArrowRight') {
+          nextModalImage();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isModalOpen, selectedService]);
+
   useEffect(() => {
     setSelectedService(services[0]);
   }, []);
 
-  // Gestion du défilement automatique
   useEffect(() => {
     if (selectedService && isAutoScrolling) {
       startAutoScroll();
@@ -245,7 +294,6 @@ const NexoliaServicesEnhanced: React.FC = () => {
     setSelectedService(service);
     setSelectedImageIndex(0);
     setShowDetails(false);
-    // Scroll vers la galerie
     setTimeout(() => {
       scrollToGallery();
     }, 100);
@@ -256,7 +304,6 @@ const NexoliaServicesEnhanced: React.FC = () => {
     if (selectedService) {
       setSelectedImageIndex((prev) => (prev + 1) % selectedService.images.length);
     }
-    // Redémarre le défilement automatique après 5 secondes d'inactivité
     setTimeout(() => {
       if (isAutoScrolling) {
         startAutoScroll();
@@ -269,7 +316,6 @@ const NexoliaServicesEnhanced: React.FC = () => {
     if (selectedService) {
       setSelectedImageIndex((prev) => (prev - 1 + selectedService.images.length) % selectedService.images.length);
     }
-    // Redémarre le défilement automatique après 5 secondes d'inactivité
     setTimeout(() => {
       if (isAutoScrolling) {
         startAutoScroll();
@@ -307,7 +353,7 @@ const NexoliaServicesEnhanced: React.FC = () => {
                   <FaChevronLeft />
                 </button>
 
-                <div className="image-wrapper">
+                <div className="image-wrapper" onClick={() => openModal(selectedImageIndex)}>
                   <img
                     src={selectedService.images[selectedImageIndex]}
                     alt={selectedService.title}
@@ -320,7 +366,10 @@ const NexoliaServicesEnhanced: React.FC = () => {
                     </div>
                     <button 
                       className={`auto-scroll-btn ${isAutoScrolling ? 'active' : ''}`}
-                      onClick={toggleAutoScroll}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleAutoScroll();
+                      }}
                       title={isAutoScrolling ? "Arrêter le défilement automatique" : "Démarrer le défilement automatique"}
                     >
                       {isAutoScrolling ? <FaPause /> : <FaPlay />}
@@ -454,6 +503,37 @@ const NexoliaServicesEnhanced: React.FC = () => {
         </div>
       </div>
 
+      {/* MODAL - Popup pour afficher l'image en plein écran */}
+      {isModalOpen && selectedService && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>
+              <FaTimes />
+            </button>
+            
+            <button className="modal-nav modal-prev" onClick={prevModalImage}>
+              <FaChevronLeft />
+            </button>
+            
+            <div className="modal-image-wrapper">
+              <img 
+                src={selectedService.images[modalImageIndex]} 
+                alt={`${selectedService.title} - Image ${modalImageIndex + 1}`}
+                className="modal-image"
+              />
+              <div className="modal-counter">
+                <FaThLarge />
+                <span>{modalImageIndex + 1} / {selectedService.images.length}</span>
+              </div>
+            </div>
+            
+            <button className="modal-nav modal-next" onClick={nextModalImage}>
+              <FaChevronRight />
+            </button>
+          </div>
+        </div>
+      )}
+
       <style>{`
         /* DESIGN SYSTEM COLORS */
         :root {
@@ -566,6 +646,7 @@ const NexoliaServicesEnhanced: React.FC = () => {
           aspect-ratio: 16/10;
           background: var(--bg-light);
           box-shadow: var(--shadow-md);
+          cursor: pointer;
         }
 
         .main-image {
@@ -973,6 +1054,121 @@ const NexoliaServicesEnhanced: React.FC = () => {
           flex-shrink: 0;
         }
 
+        /* ========== MODAL STYLES ========== */
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.95);
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-container {
+          position: relative;
+          width: 90vw;
+          height: 90vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .modal-close {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          color: white;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: var(--transition);
+          z-index: 10;
+          font-size: 1.5rem;
+        }
+
+        .modal-close:hover {
+          background: var(--primary-rose);
+          transform: scale(1.1);
+        }
+
+        .modal-nav {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          color: white;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: var(--transition);
+          z-index: 10;
+          font-size: 1.5rem;
+        }
+
+        .modal-nav:hover {
+          background: var(--primary-rose);
+          transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-prev {
+          left: 20px;
+        }
+
+        .modal-next {
+          right: 20px;
+        }
+
+        .modal-image-wrapper {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+
+        .modal-image {
+          max-width: 90%;
+          max-height: 90%;
+          object-fit: contain;
+          border-radius: 8px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+          animation: zoomIn 0.3s ease-out;
+        }
+
+        .modal-counter {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(8px);
+          padding: 0.5rem 1rem;
+          border-radius: 40px;
+          color: white;
+          font-size: 0.9rem;
+          z-index: 10;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
           from {
@@ -982,6 +1178,26 @@ const NexoliaServicesEnhanced: React.FC = () => {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes zoomIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
           }
         }
 
@@ -1042,6 +1258,20 @@ const NexoliaServicesEnhanced: React.FC = () => {
           .headerServ {
             flex-direction: column;
             gap: 1rem;
+          }
+
+          .modal-nav {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+          }
+
+          .modal-close {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+            top: 10px;
+            right: 10px;
           }
         }
       `}</style>
