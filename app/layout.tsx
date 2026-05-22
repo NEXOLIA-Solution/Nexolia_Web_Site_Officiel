@@ -5,7 +5,7 @@ import ClientLayout from "@/components/ui/ClientLayout"
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nexolia-consulting.com"),
   title: {
-    default: "NEXOLIA | Agence IT Tunisie & ESN Partenaire Tech en France",
+    default: "NEXOLIA CONSULTING | Agence IT Tunisie & ESN Partenaire Tech en France",
     template: "%s | NEXOLIA",
   },
   description: "NEXOLIA : Société de développement informatique franco-tunisienne. Expert en création d'applications sur-mesure (SaaS, Web, Mobile), intégration de solutions Microsoft 365 (SPFx, Power Automate, Power BI) et formation PMP.",
