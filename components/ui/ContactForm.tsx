@@ -74,59 +74,55 @@ const ContactForm: React.FC = () => {
 
 
 
+const siteUrl = process.env.siteUrl;
 
 
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  if (!validateForm()) return;
 
-    if (!validateForm()) return
+  setIsSubmitting(true);
 
-    setIsSubmitting(true)
+  try {
+    const response = await fetch(`${siteUrl}/api/send-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',     
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+    const data = await response.json();
 
-      const data = await response.json()
+    if (data.success) {
+      setSubmitSuccess(true);
 
-      if (data.success) {
-        setSubmitSuccess(true)
+      // Réinitialiser le formulaire
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+        projectType: "",
+        budget: "",
+        timeline: "",
+        message: "",
+        newsletter: false,
+      });
 
-        // Réinitialiser le formulaire
-        setFormData({
-          firstName: "",
-          lastName: "",
-          email: "",
-          phone: "",
-          company: "",
-          projectType: "",
-          budget: "",
-          timeline: "",
-          message: "",
-          newsletter: false,
-        })
-
-        setTimeout(() => setSubmitSuccess(false), 3000)
-      } else {
-        throw new Error(data.message)
-      }
-
-    } catch (error) {
-      console.error('Erreur:', error)
-      alert('Une erreur est survenue. Veuillez réessayer.')
-    } finally {
-      setIsSubmitting(false)
+      setTimeout(() => setSubmitSuccess(false), 3000);
+    } else {
+      throw new Error(data.message);
     }
+  } catch (error) {
+    console.error("Erreur:", error);
+    alert("Une erreur est survenue. Veuillez réessayer.");
+  } finally {
+    setIsSubmitting(false);
   }
-
-
-
+};
 
 
 
