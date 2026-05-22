@@ -3,7 +3,7 @@ import "./globals.css"
 import ClientLayout from "@/components/ui/ClientLayout"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://www.nexolia-consulting.com"),
   title: {
     default: "NEXOLIA | Agence IT Tunisie & ESN Partenaire Tech en France",
     template: "%s | NEXOLIA",
