@@ -74,8 +74,7 @@ const ContactForm: React.FC = () => {
 
 
 
-const siteUrl = process.env.siteUrl;
-
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
@@ -98,7 +97,6 @@ const handleSubmit = async (e: React.FormEvent) => {
     if (data.success) {
       setSubmitSuccess(true);
 
-      // Réinitialiser le formulaire
       setFormData({
         firstName: "",
         lastName: "",
