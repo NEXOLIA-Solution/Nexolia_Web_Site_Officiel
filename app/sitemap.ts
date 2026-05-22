@@ -1,38 +1,41 @@
 // app/sitemap.ts
+
 import { MetadataRoute } from "next"
 
+export const dynamic = "force-static"
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "nexolia-consulting.com"
+  const baseUrl = "https://nexolia-consulting.com"
 
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: "2026-05-22",
       changeFrequency: "daily",
-      priority: 1.0, // Priorité maximale pour la page d'accueil
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      lastModified: "2026-05-22",
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/portfolio`,
-      lastModified: new Date(),
+      lastModified: "2026-05-22",
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified: "2026-05-22",
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${baseUrl}/blog_news`,
-      lastModified: new Date(),
-      changeFrequency: "daily", // Fréquence haute car le flux change souvent
+      lastModified: "2026-05-22",
+      changeFrequency: "daily",
       priority: 0.7,
     },
   ]
